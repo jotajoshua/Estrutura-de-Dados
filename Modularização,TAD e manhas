@@ -1,0 +1,60 @@
+Modularização , TAD e Manhas
+
+	A convenção em linguagem C é preparar dois arquivos para implementar um "TAD".
+
+		-Arquivo ".H"(conceito): protótipos das funções, tipos de ponteiro e dados globalmente acessível.
+			->Como fazer?(exemplo)
+
+				#ifndef NOMEMAISCULO_H 
+				#define NOMEMAISCULO_H
+
+				/* declarações */
+
+				#endif
+
+		-Arquivo ".C"(implementação):declaração do tipo de dados e implementação das funções.
+			->Como fazer?(exemplo)
+
+			#include <stdio.h>
+			#include <stdlib.h>
+			#include "nomeminusculo.h"
+
+			/* operações dos declarados */
+
+		-Arquivo main : Basta incluir a biblioteca criada.
+		
+			#include <stdio.h>
+			#include <stdlib.h>
+			#include "nomeminusculo.h"
+
+			int main(){
+
+			/* chama as funções criadas */
+
+			return 0
+			}
+
+		-Makefile:
+
+			->Criar um arquivo chamado "Makefile".
+			->Alvo: dependentes.
+			ex:
+			mainTeste:	mainTeste.o	fatorial.o
+			gcc mainTeste.o	fatorial.o -o mainTeste
+			//mainteste precisa do .o dele e do .o da função chamada(fatorial).
+			mainTeste.o: mainTeste.c
+			gcc -c mainTeste.c
+
+			fatorial.o: fatorial.c fatorial.h
+			gcc -c fatorial.c
+
+			->limpar da pasta os arquivos.o criados:
+
+			clean:
+				rm *.o
+
+
+
+
+
+
